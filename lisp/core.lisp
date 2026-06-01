@@ -33,3 +33,32 @@
         ((AND (EQUALP COLOR_ACTUAL 'en_amarillo) (equalp color_siguiente 'ro)) (format t "~a pasar-a~a" color_actual color_siguiente))   
     )
 )
+
+;; FUNCION: ingreso-ciclo
+;; NATURALEZA: Pura (Efectua la validacion de datos que recibe como parámetros)
+;; ESTRATEGIA: Orden superior (Verifica que se reciba una cantidad de segundos y luego llama a las funciones duracion-ciclo y evaluacion-rango)
+;; IMPACTO: No destructiva
+
+(DEFUN ingreso-ciclo (segundos)
+    (if (numberp segundos) (progn
+        (print (duracion-ciclo segundos))
+        (recomendacion-ciclo segundos)) "ERROR EN EL INGRESO DE DATOS"))
+
+;; FUNCION: duracion-ciclo
+;; NATURALEZA: Pura (Dada una cantidad de segundos, retorna la cantidad de ciclos que se efectuan en ese tiempo)
+;; ESTRATEGIA: Orden superior ()
+;; IMPACTO: No destructiva
+
+(defun duracion-ciclo (segundos)
+    (/ segundos 216))
+
+;; FUNCION: recomendacion-ciclo
+;; NATURALEZA: Pura (Dada una cantidad de segundos, retorna una breve evaluacion del ciclo)
+;; ESTRATEGIA: Estructura condicional (Evalua si la duracion del ciclo esta dentro del rango optimo)
+;; IMPACTO: No destructiva
+
+(defun recomendacion-ciclo (segundos)
+    (cond
+        ((< segundos 35) "Ciclo demasiado corto")
+        ((> segundos 150) "Ciclo demasiado largo")
+        (T "Ciclo optimo")))
