@@ -1,19 +1,31 @@
-;; FUNCION: valido-datos
-;; NATURALEZA: Pura (verifica si los datos pasados por parámetros son válidos)
-;; ESTRATEGIA: Orden superior (combina una funcion condicional simple con el llamado a otra funcion si los datos son validos y un mensaje si los datos no son validos)
-;; IMPACTO: No destructiva
+;;FUNCION: siesentero
+;;NATURALEZA: con efectos secundarios (tiene salida por pantalla si falla)
+;;ESTRATEGIA: implementa un condicional para verificar que el valor de timestamp sea valido para luego implemetar la función timer
+;;IMPACTO: no destructiva
 
-(Defun valido-datos (color-actual color-siguiente)
+(defun siesentero (timestamp)
 
-    (IF (and (or (equalp color-actual 'en-rojo) (equalp color-actual 'en-amarillo) 
-                 (equalp color-actual 'en-verde)) (or (equalp  color-siguiente 'rojo) 
-                 (equalp color-siguiente 'amarillo) (equalp color-siguiente 'verde)) 
-                 (not (equalp color-actual color-siguiente)) (transicion color-actual color-siguiente) "Error en el ingreso de datos"))
+ (if (integerp timestamp)
+ 
+  (timer timestamp)
+  (format t "no es una hora valida")
+  
+ )
 
-;; FUNCION: transición 
-;; NATURALEZA: Pura (muestra el color actual del semaforo y a que color cambia)
-;; ESTRATEGIA: Orden superior (muestra el color actual del semaforo y a que color cambia)
-;; IMPACTO: No destructiva
+)
 
-(Defun transición (color-actual color-siguiente)
-    (List color-actual "cambiar-a" color-siguiente))
+
+
+;; FUNCION: timer 
+;; NATURALEZA: pura  devuelve un valor para el tipo de color segun el tiempo dado
+;; ESTRATEGIA: mediante función aritmética y un condicional multiple se determina a que color se hacer referencia según el tiempo
+;; IMPACTO: no destructiva
+
+
+(defun timer (timestamp)
+   (cond
+    ((< (mod timestamp 216) 91) 'en-rojo )
+    ((< (mod timestamp 216) 97)  'en-amarillo)
+    ((< (mod timestamp 216) 216)  'en-verde )
+   )
+  )
