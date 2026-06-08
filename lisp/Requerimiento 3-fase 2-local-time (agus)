@@ -1,0 +1,22 @@
+;; ========================================================
+;; FUNCIÓN: auditar-cambio
+;; NATURALEZA: Impura (imprime información en pantalla mediante format)
+;; ESTRATEGIA: Función de composición (utiliza timer para obtener
+;;             el estado anterior y actual, los compara y emplea
+;;             Local-Time para registrar la fecha y hora del evento)
+;; IMPACTO: No destructiva (no modifica estructuras ni variables)
+;; ========================================================
+
+(defun cambio-estado-luz (timestamp)
+
+  (let ((anterior (timer (- timestamp 1)))
+        (actual   (timer timestamp)))
+
+    (if (not (eq anterior actual))
+        (format t
+                "Tiempo [~A] la luz ha cambiado de ~A a ~A~%"
+                 (local-time:now)
+                anterior
+                actual)
+(format t
+                "Tiempo [~A] no hubo cambio de estado ~%"  (local-time:now)))))
