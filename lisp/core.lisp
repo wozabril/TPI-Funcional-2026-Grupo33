@@ -35,6 +35,26 @@
     )
 )
 
+;;REQUERIMIENTO 3: SISTEMA DE AUDITORIA
+;; FUNCIÓN: auditar-cambio
+;; NATURALEZA: Impura (imprime información en pantalla mediante format)
+;; ESTRATEGIA: Función de composición (utiliza timer para obtener
+;;             el estado anterior y actual y luego los compara)
+;; IMPACTO: No destructiva (no modifica estructuras ni variables)
+
+(defun cambio-estado-luz (timestamp)
+  (let ((anterior (timer (- timestamp 1)))
+        (actual   (timer timestamp)))
+    (if (not (eq anterior actual))
+        (format t
+                "Tiempo ~A: la luz ha cambiado de ~A a ~A~%"
+                timestamp
+                anterior
+                actual) 
+        (format t
+                “tiempo ~A: no hubo cambio de estado ~%” 
+                  Timestamp))))
+
 ;; REQUERIMIENTO 4: ANALISIS DE CICLOS SEMAFORICOS
 ;; FUNCION: ingreso-ciclo
 ;; NATURALEZA: Pura (Efectua la validacion de datos que recibe como parámetros)
