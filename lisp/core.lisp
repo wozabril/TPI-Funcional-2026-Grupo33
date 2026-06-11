@@ -1,31 +1,14 @@
-;;FUNCION: siesentero
-;;NATURALEZA: con efectos secundarios (tiene salida por pantalla si falla)
-;;ESTRATEGIA: implementa un condicional para verificar que el valor de timestamp sea valido para luego implemetar la función timer
-;;IMPACTO: no destructiva
 
-(defun siesentero (timestamp)
+;; REQUERIMIENTO 6
+;; FUNCION: distribucion-temporal
+;; NATURALEZA: Impura (imprime información en pantalla mediante FORMAT)
+;; ESTRATEGIA: Construcción directa (calcula los porcentajes mediante fórmulas aritméticas sin recursión ni funciones de orden superior)
+;; IMPACTO: No destructiva (no modifica estructuras ni variables)
 
- (if (integerp timestamp)
- 
-  (timer timestamp)
-  (format t "no es una hora valida")
-  
- )
+(defun distribucion-temporal ()
 
-)
-
-
-
-;; FUNCION: timer 
-;; NATURALEZA: pura  devuelve un valor para el tipo de color segun el tiempo dado
-;; ESTRATEGIA: mediante función aritmética y un condicional multiple se determina a que color se hacer referencia según el tiempo
-;; IMPACTO: no destructiva
-
-
-(defun timer (timestamp)
-   (cond
-    ((< (mod timestamp 216) 91) 'en-rojo )
-    ((< (mod timestamp 216) 97)  'en-amarillo)
-    ((< (mod timestamp 216) 216)  'en-verde )
-   )
-  )
+  (format t
+          "Rojo: ~,2F%~%Amarillo: ~,2F%~%Verde: ~,2F%~%"
+          (* (/ 90.0 216) 100)
+          (* (/ 6.0 216) 100)
+          (* (/ 120.0 216) 100)))
