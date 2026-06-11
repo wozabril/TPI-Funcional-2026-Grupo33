@@ -13,6 +13,6 @@
             (>= minutos 0))
 
        (nth-value 0
-         (floor (duracion-ciclo (* minutos 60))))
+         (floor (* minutos 60)216))
 
        "ERROR EN EL INGRESO DE DATOS"))
