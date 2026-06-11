@@ -17,4 +17,7 @@
                 "Tiempo ~A: la luz ha cambiado de ~A a ~A~%"
                 timestamp
                 anterior
-                actual))))
+                actual) 
+        (format t
+                “tiempo ~A: no hubo cambio de estado ~%” 
+                  Timestamp))))
