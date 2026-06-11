@@ -19,7 +19,6 @@
               
 (transicion color-actual color-siguiente) "Error en el ingreso de datos"))))
 
- 
 
 ;; FUNCION: transición 
 ;; NATURALEZA: Pura (muestra el color actual del semaforo y a que color cambia)
@@ -30,10 +29,8 @@
     (COND 
         ((AND (EQUALP COLOR_ACTUAL 'en_rojo) (equalp color_siguiente 'amarillo)) (format t "~a pasar-a~a" color_actual color_siguiente))
         ((AND (EQUALP COLOR_ACTUAL 'en_amarillo) (equalp color_siguiente 'verde)) (format t "~a pasar-a~a" color_actual color_siguiente))
-        ((AND (EQUALP COLOR_ACTUAL 'en_verde) (equalp color_siguiente 'amarillo)) (format t "~a pasar-a~a" color_actual color_siguiente))
-        ((AND (EQUALP COLOR_ACTUAL 'en_amarillo) (equalp color_siguiente 'ro)) (format t "~a pasar-a~a" color_actual color_siguiente))   
-    )
-)
+        ((AND (EQUALP COLOR_ACTUAL 'en_verde) (equalp color_siguiente 'rojo)) (format t "~a pasar-a~a" color_actual color_siguiente))))
+
 
 ;;REQUERIMIENTO 3: SISTEMA DE AUDITORIA
 ;; FUNCIÓN: auditar-cambio
@@ -54,6 +51,7 @@
         (format t
                 “tiempo ~A: no hubo cambio de estado ~%” 
                   Timestamp))))
+
 
 ;; REQUERIMIENTO 4: ANALISIS DE CICLOS SEMAFORICOS
 ;; FUNCION: ingreso-ciclo
