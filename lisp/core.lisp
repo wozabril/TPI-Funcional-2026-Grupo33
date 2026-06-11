@@ -23,9 +23,9 @@
 
 
 (defun timer (timestamp)
-   (cond
-    ((< (mod timestamp 216) 91) 'en-rojo )
-    ((< (mod timestamp 216) 97)  'en-amarillo)
-    ((< (mod timestamp 216) 216)  'en-verde )
-   )
-  )
+
+  (cond
+    ((< (mod timestamp 216) 90) 'en-rojo)
+    ((< (mod timestamp 216) 96) 'en-amarillo)
+    ((< (mod timestamp 216) 216) 'en-verde)))
+
