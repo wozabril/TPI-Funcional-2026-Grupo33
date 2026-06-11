@@ -1,31 +1,29 @@
-;;FUNCION: siesentero
-;;NATURALEZA: con efectos secundarios (tiene salida por pantalla si falla)
-;;ESTRATEGIA: implementa un condicional para verificar que el valor de timestamp sea valido para luego implemetar la función timer
-;;IMPACTO: no destructiva
+;; REQUERIMIENTO 7
+;; FUNCION: ASEGURAMIENTO DE LA CALIDAD
+;; NATURALEZA: Impura (ejecuta funciones que pueden producir
+;;              salida por pantalla)
+;; ESTRATEGIA: Validación mediante casos de prueba
+;;             representativos de uso normal, alternativo
+;;             y erróneo
+;; IMPACTO: No destructiva
 
-(defun siesentero (timestamp)
+;; REQ 1
+(valido-datos 'en-rojo 'amarillo)
+(valido-datos 'en-verde 'amarillo)
+(valido-datos 'azul 'verde)
 
- (if (integerp timestamp)
- 
-  (timer timestamp)
-  (format t "no es una hora valida")
-  
- )
+;; REQ 2
+(siesentero 100)
+(siesentero "hola")
 
-)
+;; REQ 3
+(cambio-estado-luz 90)
+(cambio-estado-luz 50)
 
+;; REQ 4
+(ingreso-ciclo 216)
+(ingreso-ciclo "abc")
 
-
-;; FUNCION: timer 
-;; NATURALEZA: pura  devuelve un valor para el tipo de color segun el tiempo dado
-;; ESTRATEGIA: mediante función aritmética y un condicional multiple se determina a que color se hacer referencia según el tiempo
-;; IMPACTO: no destructiva
-
-
-(defun timer (timestamp)
-
-  (cond
-    ((< (mod timestamp 216) 90) 'en-rojo)
-    ((< (mod timestamp 216) 96) 'en-amarillo)
-    ((< (mod timestamp 216) 216) 'en-verde)))
-
+;; REQ 5
+(ciclos-por-tiempo 15)
+(ciclos-por-tiempo -5)
