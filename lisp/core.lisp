@@ -84,3 +84,18 @@
         ((< segundos 35) "Ciclo demasiado corto")
         ((> segundos 150) "Ciclo demasiado largo")
         (T "Ciclo optimo")))
+
+;;REQUERIMIENTO 5: PLANIFICACION TEMPORAL
+;; FUNCIÓN: ciclos-por-tiempo
+;; NATURALEZA: Pura (Dado un número de minutos, siempre
+;;             retorna la misma cantidad de ciclos)
+;; ESTRATEGIA: Composición (utiliza duracion-ciclo, floor
+;;             y nth-value para calcular los ciclos completos)
+;; IMPACTO: No destructiva
+
+(defun ciclos-por-tiempo (minutos)
+   (if (and (numberp minutos)
+            (>= minutos 0))
+       (nth-value 0
+         (floor(* minutos 60)216))
+       "ERROR EN EL INGRESO DE DATOS"))
