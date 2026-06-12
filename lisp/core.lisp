@@ -182,3 +182,7 @@
 ;; REQ 5
 (ciclos-por-tiempo 15)
 (ciclos-por-tiempo -5)
+
+;; REQ 6
+
+(distribucion-temporal)
