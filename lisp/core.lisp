@@ -32,6 +32,39 @@
         ((AND (EQUALP COLOR_ACTUAL 'en_verde) (equalp color_siguiente 'rojo)) (format t "~a pasar-a~a" color_actual color_siguiente))))
 
 
+
+;;REQUERIMENTO 2: FUNCION TIMER
+;;FUNCION: siesentero
+;;NATURALEZA: con efectos secundarios (tiene salida por pantalla si falla)
+;;ESTRATEGIA: implementa un condicional para verificar que el valor de timestamp sea valido para luego implemetar la función timer
+;;IMPACTO: no destructiva
+
+(defun siesentero (timestamp)
+
+ (if (integerp timestamp)
+ 
+  (timer timestamp)
+  (format t "no es una hora valida")
+  
+ )
+
+)
+
+;; FUNCION: timer 
+;; NATURALEZA: pura  devuelve un valor para el tipo de color segun el tiempo dado
+;; ESTRATEGIA: mediante función aritmética y un condicional multiple se determina a que color se hacer referencia según el tiempo
+;; IMPACTO: no destructiva
+
+
+(defun timer (timestamp)
+
+  (cond
+    ((< (mod timestamp 216) 90) 'en-rojo)
+    ((< (mod timestamp 216) 96) 'en-amarillo)
+    ((< (mod timestamp 216) 216) 'en-verde)))
+
+
+
 ;;REQUERIMIENTO 3: SISTEMA DE AUDITORIA
 ;; FUNCIÓN: auditar-cambio
 ;; NATURALEZA: Impura (imprime información en pantalla mediante format)
@@ -51,6 +84,8 @@
         (format t
                 “tiempo ~A: no hubo cambio de estado ~%” 
                   Timestamp))))
+
+
 
 
 ;; REQUERIMIENTO 4: ANALISIS DE CICLOS SEMAFORICOS
@@ -82,6 +117,8 @@
         ((< segundos 35) "Ciclo demasiado corto")
         ((> segundos 150) "Ciclo demasiado largo")
         (T "Ciclo optimo")))
+
+
 
 ;;REQUERIMIENTO 5: PLANIFICACION TEMPORAL
 ;; FUNCIÓN: ciclos-por-tiempo
