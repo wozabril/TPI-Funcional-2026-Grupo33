@@ -50,10 +50,6 @@
      (list color_actual "cambiar-a-verde"))
 
     ((and (equalp color_actual 'en-verde)
-          (equalp color_siguiente 'amarillo))
-     (list color_actual "cambiar-a-amarillo"))
-
-    ((and (equalp color_actual 'en-amarillo)
           (equalp color_siguiente 'rojo))
      (list color_actual "cambiar-a-rojo"))
 
