@@ -4,20 +4,31 @@
 ;; ESTRATEGIA: Orden superior (combina una funcion condicional simple con el llamado a otra funcion si los datos son validos y un mensaje si los datos no son validos)
 ;; IMPACTO: No destructiva
 
-(Defun valido-datos (color-actual color-siguiente)
-     (IF (and (or (equalp color-actual 'en-rojo)
-                  (equalp color-actual 'en-amarillo) 
-                  (equalp color-actual 'en-verde)) 
-                  
-              (or (equalp color-siguiente 'rojo) 
-              (equalp color-siguiente 'amarillo) 
-              (equalp color-siguiente 'verde))
+(defun valido-datos (color-actual color-siguiente)
 
-              (and (not (and (equalp color-actual 'en-rojo) (equalp color-siguiente 'rojo)) 
-              (not (and (equalp color-actual 'en-amarillo) (equalp color-siguiente 'amarillo)) 
-              (not (and (equalp color-actual 'en-verde) (equalp color-siguiente 'verde)))))
-              
-(transicion color-actual color-siguiente) "Error en el ingreso de datos"))))
+  (if (and
+       (or (equalp color-actual 'en-rojo)
+           (equalp color-actual 'en-amarillo)
+           (equalp color-actual 'en-verde))
+
+       (or (equalp color-siguiente 'rojo)
+           (equalp color-siguiente 'amarillo)
+           (equalp color-siguiente 'verde))
+
+       (not (or
+             (and (equalp color-actual 'en-rojo)
+                  (equalp color-siguiente 'rojo))
+
+             (and (equalp color-actual 'en-amarillo)
+                  (equalp color-siguiente 'amarillo))
+
+             (and (equalp color-actual 'en-verde)
+                  (equalp color-siguiente 'verde))))
+      )
+      
+      (transicion color-actual color-siguiente)
+
+      "Error en el ingreso de datos"))
 
 
 ;; FUNCION: transición 
@@ -25,12 +36,29 @@
 ;; ESTRATEGIA: Orden superior (muestra el color actual del semaforo y a que color cambia)
 ;; IMPACTO: No destructiva
 
-(defun transicion (color_actual color_siguiente)
-    (COND 
-        ((AND (EQUALP COLOR_ACTUAL 'en_rojo) (equalp color_siguiente 'amarillo)) (format t "~a pasar-a~a" color_actual color_siguiente))
-        ((AND (EQUALP COLOR_ACTUAL 'en_amarillo) (equalp color_siguiente 'verde)) (format t "~a pasar-a~a" color_actual color_siguiente))
-        ((AND (EQUALP COLOR_ACTUAL 'en_verde) (equalp color_siguiente 'rojo)) (format t "~a pasar-a~a" color_actual color_siguiente))))
 
+(defun transicion (color_actual color_siguiente)
+
+  (cond
+
+    ((and (equalp color_actual 'en-rojo)
+          (equalp color_siguiente 'amarillo))
+     (list color_actual "cambiar-a-amarillo"))
+
+    ((and (equalp color_actual 'en-amarillo)
+          (equalp color_siguiente 'verde))
+     (list color_actual "cambiar-a-verde"))
+
+    ((and (equalp color_actual 'en-verde)
+          (equalp color_siguiente 'amarillo))
+     (list color_actual "cambiar-a-amarillo"))
+
+    ((and (equalp color_actual 'en-amarillo)
+          (equalp color_siguiente 'rojo))
+     (list color_actual "cambiar-a-rojo"))
+
+    (t
+     (list color_actual 'accion-por-defecto))))
 
 
 ;;REQUERIMENTO 2: FUNCION TIMER
