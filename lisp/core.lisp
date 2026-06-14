@@ -207,10 +207,6 @@
 (ciclos-por-tiempo 15)
 (ciclos-por-tiempo -5)
 
-;; REQ 6
-
-(distribucion-temporal)
-
 ;; =================================================================
 ;; ITERACION 2 - EXTENSION 1: Intermitencia
 ;; =================================================================
@@ -247,6 +243,22 @@
      (list color_actual 'accion-por-defecto))
   )
 )
+
+;; FUNCION: timer 
+;; NATURALEZA: pura  devuelve un valor para el tipo de color segun el tiempo dado
+;; ESTRATEGIA: mediante función aritmética y un condicional multiple se determina a que color se hacer referencia según el tiempo
+;; IMPACTO: no destructiva
+
+
+
+(defun timer-intermitente (timestamp)
+
+  (cond
+    ((< (mod timestamp 222) 90) 'en-rojo)
+    ((< (mod timestamp 222) 93) 'amarillo-intermitente)
+    ((< (mod timestamp 222) 213) 'en-verde)
+    ((< (mod timestamp 222) 216) 'amarillo-intermitente)
+    ((< (mod timestamp 222) 222) 'en-rojo)))
 
 
 ;; =================================================================
