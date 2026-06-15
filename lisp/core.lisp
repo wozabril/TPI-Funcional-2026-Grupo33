@@ -248,21 +248,35 @@
   )
 )
 
-;; FUNCION: timer 
-;; NATURALEZA: pura  devuelve un valor para el tipo de color segun el tiempo dado
-;; ESTRATEGIA: mediante función aritmética y un condicional multiple se determina a que color se hacer referencia según el tiempo
-;; IMPACTO: no destructiva
-
-
+;; FUNCION: timer-intermitente
+;; NATURALEZA: Pura (para un mismo timestamp siempre devuelve
+;;              el mismo estado del semáforo, sin efectos secundarios)
+;; ESTRATEGIA: Construcción directa mediante operaciones aritméticas
+;;             y estructura condicional múltiple (COND). Utiliza MOD
+;;             para determinar la posición temporal dentro del ciclo
+;;             completo y asociarla al estado correspondiente.
+;; IMPACTO: No destructiva (no modifica datos ni estructuras)
 
 (defun timer-intermitente (timestamp)
 
   (cond
-    ((< (mod timestamp 222) 90) 'en-rojo)
-    ((< (mod timestamp 222) 93) 'amarillo-intermitente)
-    ((< (mod timestamp 222) 213) 'en-verde)
-    ((< (mod timestamp 222) 216) 'amarillo-intermitente)
-    ((< (mod timestamp 222) 222) 'en-rojo)))
+    ((< (mod timestamp 225) 90)
+     'en_rojo)
+
+    ((< (mod timestamp 225) 93)
+     'en_rojo_intermitente)
+
+    ((< (mod timestamp 225) 213)
+     'en_verde)
+
+    ((< (mod timestamp 225) 216)
+     'en_verde_intermitente)
+
+    ((< (mod timestamp 225) 222)
+     'en_amarillo)
+
+    ((< (mod timestamp 225) 225)
+     'en_amarillo_intermitente)))
 
 
 ;; =================================================================
