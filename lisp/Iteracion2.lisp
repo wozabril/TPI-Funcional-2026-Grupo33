@@ -44,6 +44,28 @@
 ;;             completo y asociarla al estado correspondiente.
 ;; IMPACTO: No destructiva (no modifica datos ni estructuras)
 
+(defun timer-intermitente (timestamp)
+
+  (cond
+    ((< (mod timestamp 225) 90)
+     'en-rojo)
+
+    ((< (mod timestamp 225) 93)
+     'en_rojo_intermitente)
+
+    ((< (mod timestamp 225) 213)
+     'en-amarillo)
+
+    ((< (mod timestamp 225) 216)
+     'en_amarillo_intermitente)
+     
+    ((< (mod timestamp 225) 222)
+     'en-verde)
+
+    ((< (mod timestamp 225) 225)
+     'en_verde_intermitente)))
+
+
 
 
 ;; =================================================================
