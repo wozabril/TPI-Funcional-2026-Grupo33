@@ -10,30 +10,31 @@
 (defun transicion (color_actual color_siguiente)
   (cond
     ;; Transiciones para agregar los 3 seg de intermitencia
-    ((and (equalp color_actual 'en_rojo) (equalp color_siguiente 'verde))
-     (list 'en_rojo_intermitente "cambiar-a-rojo-intermitente"))
+    ((and (equalp color_actual 'en-rojo) (equalp color_siguiente 'amarillo))
+     (list 'en-rojo "cambiar-a-rojo-intermitente"))
     
-    ((and (equalp color_actual 'en_verde) (equalp color_siguiente 'amarillo))
-     (list 'en_verde_intermitente "cambiar-a-verde-intermitente"))
+    ((and (equalp color_actual 'en-amarillo) (equalp color_siguiente 'verde))
+     (list 'en-amarillo "cambiar-a-amarillo-intermitente"))
     
-    ((and (equalp color_actual 'en_amarillo) (equalp color_siguiente 'rojo))
-     (list 'en_amarillo_intermitente "cambiar-a-amarillo-intermitente"))
+    ((and (equalp color_actual 'en-verde) (equalp color_siguiente 'rojo))
+     (list 'en-verde "cambiar-a-verde-intermitente"))
      
     ;; Transiciones para salir de la intermitencia al color definitivo
-    ((and (equalp color_actual 'en_rojo_intermitente) (equalp color_siguiente 'verde))
-     (list 'en_verde "cambiar-a-verde"))
+    ((and (equalp color_actual 'en_rojo_intermitente) (equalp color_siguiente 'amarillo))
+     (list 'en-rojo "cambiar-a-amarillo"))
      
-    ((and (equalp color_actual 'en_verde_intermitente) (equalp color_siguiente 'amarillo))
-     (list 'en_amarillo "cambiar-a-amarillo"))
+    ((and (equalp color_actual 'en_amarillo_intermitente) (equalp color_siguiente 'verde))
+     (list 'en-amarillo "cambiar-a-verde"))
      
-    ((and (equalp color_actual 'en_amarillo_intermitente) (equalp color_siguiente 'rojo))
-     (list 'en_rojo "cambiar-a-rojo"))
+    ((and (equalp color_actual 'en_verde_intermitente) (equalp color_siguiente 'rojo))
+     (list 'en-verde "cambiar-a-rojo"))
     
     ;; Caso por defecto si no entra en nada de lo de arriba
     (t 
      (list color_actual 'accion-por-defecto))
   )
 )
+
 
 
 ;; =================================================================
