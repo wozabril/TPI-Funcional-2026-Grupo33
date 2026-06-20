@@ -45,26 +45,30 @@
 ;; IMPACTO: No destructiva (no modifica datos ni estructuras)
 
 (defun timer-intermitente (timestamp)
-
   (cond
-    ((< (mod timestamp 225) 90)
-     'en-rojo)
+    ;; Rojo: 120 s
+    ((< (mod timestamp 225) 120)
+     'en_rojo)
 
-    ((< (mod timestamp 225) 93)
+    ;; Rojo intermitente: 3 s
+    ((< (mod timestamp 225) 123)
      'en_rojo_intermitente)
 
-    ((< (mod timestamp 225) 213)
-     'en-amarillo)
+    ;; Amarillo: 6 s
+    ((< (mod timestamp 225) 129)
+     'en_amarillo)
 
-    ((< (mod timestamp 225) 216)
+    ;; Amarillo intermitente: 3 s
+    ((< (mod timestamp 225) 132)
      'en_amarillo_intermitente)
-     
-    ((< (mod timestamp 225) 222)
-     'en-verde)
 
+    ;; Verde: 90 s
+    ((< (mod timestamp 225) 222)
+     'en_verde)
+
+    ;; Verde intermitente: 3 s
     ((< (mod timestamp 225) 225)
      'en_verde_intermitente)))
-
 
 
 
