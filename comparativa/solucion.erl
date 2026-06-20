@@ -25,8 +25,7 @@ transicion(Color_actual, Color_siguiente) ->
     case {Color_actual, Color_siguiente} of
         {en_rojo, amarillo} -> [en_rojo, "cambiar-a-amarillo"];
         {en_amarillo, verde} -> [en_amarillo, "cambiar-a-verde"];
-        {en_verde, amarillo} -> [en_verde, "cambiar-a-amarillo"];
-        {en_amarillo, rojo} -> [en_amarillo, "cambiar-a-rojo"];
+        {en_verde, rojo} -> [en_verde, "cambiar-a-rojo"];
         _ -> [Color_actual, "accion-por-defecto"]
     end.
 
