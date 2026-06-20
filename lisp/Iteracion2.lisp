@@ -35,6 +35,15 @@
   )
 )
 
+;; FUNCION: timer-intermitente
+;; NATURALEZA: Pura (para un mismo timestamp siempre devuelve
+;;              el mismo estado del semáforo, sin efectos secundarios)
+;; ESTRATEGIA: Construcción directa mediante operaciones aritméticas
+;;             y estructura condicional múltiple (COND). Utiliza MOD
+;;             para determinar la posición temporal dentro del ciclo
+;;             completo y asociarla al estado correspondiente.
+;; IMPACTO: No destructiva (no modifica datos ni estructuras)
+
 
 
 ;; =================================================================
