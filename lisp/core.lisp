@@ -4,29 +4,29 @@
 ;; ESTRATEGIA: Orden superior (combina una funcion condicional simple con el llamado a otra funcion si los datos son validos y un mensaje si los datos no son validos)
 ;; IMPACTO: No destructiva
 
-(defun valido-datos (color-actual color-siguiente)
+(defun valido-datos (color_actual color_siguiente)
 
   (if (and
-       (or (equalp color-actual 'en-rojo)
-           (equalp color-actual 'en-amarillo)
-           (equalp color-actual 'en-verde))
+       (or (equalp color_actual 'en-rojo)
+           (equalp color_actual 'en-amarillo)
+           (equalp color_actual 'en-verde))
 
-       (or (equalp color-siguiente 'rojo)
-           (equalp color-siguiente 'amarillo)
-           (equalp color-siguiente 'verde))
+       (or (equalp color_siguiente 'rojo)
+           (equalp color_siguiente 'amarillo)
+           (equalp color_siguiente 'verde))
 
        (not (or
-             (and (equalp color-actual 'en-rojo)
-                  (equalp color-siguiente 'rojo))
+             (and (equalp color_actual 'en-rojo)
+                  (equalp color_siguiente 'rojo))
 
-             (and (equalp color-actual 'en-amarillo)
-                  (equalp color-siguiente 'amarillo))
+             (and (equalp color_actual 'en-amarillo)
+                  (equalp color_siguiente 'amarillo))
 
-             (and (equalp color-actual 'en-verde)
-                  (equalp color-siguiente 'verde))))
+             (and (equalp color_actual 'en-verde)
+                  (equalp color_siguiente 'verde))))
       )
       
-      (transicion color-actual color-siguiente)
+      (transicion color_actual color_siguiente)
 
       "Error en el ingreso de datos"))
 
@@ -55,7 +55,6 @@
 
     (t
      (list color_actual 'accion-por-defecto))))
-
 
 ;;REQUERIMENTO 2: FUNCION TIMER
 ;;FUNCION: siesentero
@@ -106,8 +105,8 @@
                 anterior
                 actual) 
         (format t
-                “tiempo ~A: no hubo cambio de estado ~%” 
-                  Timestamp))))
+                "tiempo ~A: no hubo cambio de estado ~%"
+                  timestamp))))
 
 
 
@@ -131,6 +130,7 @@
 (defun duracion-ciclo (segundos)
     (/ segundos 216))
 
+
 ;; FUNCION: recomendacion-ciclo
 ;; NATURALEZA: Pura (Dada una cantidad de segundos, retorna una breve evaluacion del ciclo)
 ;; ESTRATEGIA: Estructura condicional (Evalua si la duracion del ciclo esta dentro del rango optimo)
@@ -141,7 +141,6 @@
         ((< segundos 35) "Ciclo demasiado corto")
         ((> segundos 150) "Ciclo demasiado largo")
         (T "Ciclo optimo")))
-
 
 
 ;;REQUERIMIENTO 5: PLANIFICACION TEMPORAL
@@ -179,6 +178,7 @@
             (first porcentajes)
             (second porcentajes)
             (third porcentajes))))
+
 
 ;; REQUERIMIENTO 7
 ;; FUNCION: ASEGURAMIENTO DE LA CALIDAD
