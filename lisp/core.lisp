@@ -89,7 +89,7 @@
 
 
 ;;REQUERIMIENTO 3: SISTEMA DE AUDITORIA
-;; FUNCIÓN: auditar-cambio
+;; FUNCIÓN: cambio-estado-luz
 ;; NATURALEZA: Impura (imprime información en pantalla mediante format)
 ;; ESTRATEGIA: Función de composición (utiliza timer para obtener
 ;;             el estado anterior y actual y luego los compara)
