@@ -4,3 +4,5 @@
 Repositorio correspondiente al trabajo práctico integrador de la materia Paradigmas y Lenguajes de programación de la carrera LSI (Lic. Sistemas de Información) 
 
 Enlace al video en YouTube: https://www.youtube.com/watch?v=wryNZdGEqfY
+
+Enlace al video en YouTube (CORREGIDO): https://youtu.be/pm8-DSg3xyY
