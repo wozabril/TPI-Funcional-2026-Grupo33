@@ -1,5 +1,5 @@
 ;; ========================================================
-;; FUNCIÓN: auditar-cambio
+;; FUNCIÓN: cambio-estado-luz
 ;; NATURALEZA: Impura (imprime información en pantalla mediante format)
 ;; ESTRATEGIA: Función de composición (utiliza timer para obtener
 ;;             el estado anterior y actual, los compara y emplea
